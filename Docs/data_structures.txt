@@ -1,0 +1,52 @@
+DATA STRUCTURE GUIDELINES:
+RENDER CODE:
+
+	MAPS
+
+		HEX, each byte represents a tile?
+		Maybe implement a header for the first few bytes (mapsize, misc data, exit direction)
+		EXAMPLE: 
+		00 = FLOOR
+		01 = PLAYER START
+		02 = EXIT
+		03 = IMPASSIBLE WALL
+
+		SO A 5X5 MAP WOULD LOOK LIKE (SQUARE ROOM W/ PLAYER START IN CENTER, EXIT AT BOTTOM CENTER)
+
+		03 03 03 03 03
+		03 00 00 OO 03
+		03 00 01 00 03
+		03 00 00 00 03
+		03 03 02 03 03
+
+		map tiles are enumerated.   1 = top left, 25 = bottom right for easy update/access.
+
+
+	SURFACES
+		player (what the player looks like composited (Base plus art/weapons/etc))
+		background (floors)  < EDIT: render only once, redraw the part we're looking at per frame, no having to deal with redrawing individual parts of the background, will make animation easier too. 
+		background decoration (doors/non entities)
+		sprite background (sprites/entities)
+		ui/messages layer (don't need gore anymore with paperdolling/placeholder surfaces)
+		menu layer ( we need a transparency overlay like every other pixel = transparent to shade the screen for menu)
+		Composite (what is going to be outputted to screen)
+		CompositePrev (what was just on the screen for easy snipping/updating without redrawing everything)
+
+GAME CODE:
+
+	ENTITIES (may need to be a class instead of struct).   
+		int ID 0 = player, other things are enumerated in a stack.
+		int type (living/item/thing)  < why class may be req'd instead of struct to keep entities bundled up neatly into one table.
+		if living 
+		int base hp
+		int attack base
+		equipped
+		sprite sheet location (in slots)
+		name
+	
+	ENTITY TABLE.
+	id =
+	name = (points to entity id's name) so we can get messages like: you were killed by: entity1.name;
+	misc shit that may matter later.
+
+	Entities needs more work/planning before implementing. 
