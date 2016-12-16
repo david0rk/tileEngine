@@ -6,12 +6,13 @@
 
 #include "SDL/SDL.h"
 #include <iostream>
-
 const int WINDOW_WIDTH = 640;
 const int WINDOW_HEIGHT = 640;
 const char* WINDOW_TITLE = "Tile Organizer";
 int tileSize = 16; // sets tile size (square) for the renderer.
 //The demo sheet I'm using has 16x16 sprites, but a 1px margin.  It feels shitty, but it works and kind of makes sense.
+// nope off by one because the first sprite doesn't have a 1px border on the left, yaay more  pixel ar practice in gimp, 
+//however the output (save function) accounts for it nicely, my own program kicking my ass at art :(
 
 int main(int argc, char **argv)
 {
@@ -29,7 +30,7 @@ int sourceHeight = sourceSheet->h; // height of loaded sheet.
 
 
 /*
- * pretty much any std:cout in this is debugging info 
+ * pretty much any std:cout in this is debugging info
 */  
 std::cout << "source surface is " << sourceWidth << "wide" <<std::endl;
 std::cout << "source surface is " << sourceHeight << "tall" <<std::endl;
@@ -47,6 +48,8 @@ drawDest.x = 0;
 drawDest.y = 0;
 drawDest.w = 0;
 drawDest.h = 0;
+
+
 
 // initial draw (ONE IN THE CHAMBER!) 
 SDL_BlitSurface(sourceSheet, &loadedTile, screen, &drawDest); 
@@ -72,8 +75,8 @@ while (gameRunning)
 				break;
 				
 				case SDLK_s:
-					SDL_SaveBMP(screen,"output.bmp" );
-				break;
+                    SDL_SaveBMP(screen,"output.bmp" );
+                break;
 
 				case SDLK_RETURN: // next output row.
 					if (drawDest.y < WINDOW_HEIGHT-(tileSize))

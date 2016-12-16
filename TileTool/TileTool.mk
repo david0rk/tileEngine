@@ -5,15 +5,15 @@
 ## Debug
 ProjectName            :=TileTool
 ConfigurationName      :=Debug
-WorkspacePath          := "/home/david0rk/Dropbox/Projects/tinkering/Game"
-ProjectPath            := "/home/david0rk/Dropbox/Projects/tinkering/Game/TileTool"
+WorkspacePath          := "/home/david0rk/Projects/tileEngine"
+ProjectPath            := "/home/david0rk/Projects/tileEngine/TileTool"
 IntermediateDirectory  :=./Debug
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=David Lambert
-Date                   :=23/07/16
+Date                   :=16/12/16
 CodeLitePath           :="/home/david0rk/.codelite"
 LinkerName             :=/usr/bin/g++
 SharedObjectLinkerName :=/usr/bin/g++ -shared -fPIC
@@ -92,7 +92,7 @@ PreBuild:
 ## Objects
 ##
 $(IntermediateDirectory)/main.cpp$(ObjectSuffix): main.cpp $(IntermediateDirectory)/main.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/david0rk/Dropbox/Projects/tinkering/Game/TileTool/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/david0rk/Projects/tileEngine/TileTool/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/main.cpp$(DependSuffix): main.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/main.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/main.cpp$(DependSuffix) -MM "main.cpp"
 

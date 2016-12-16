@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Workspace Name="TileGame" Database="">
-  <Project Name="Engine" Path="Engine/Engine.project" Active="No"/>
-  <Project Name="TileTool" Path="TileTool/TileTool.project" Active="Yes"/>
+  <Project Name="Engine" Path="Engine/Engine.project" Active="Yes"/>
+  <Project Name="TileTool" Path="TileTool/TileTool.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Project Name="Engine" ConfigName="Debug"/>
