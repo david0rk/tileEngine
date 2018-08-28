@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CodeLite_Workspace Name="TileGame" Database="">
+<CodeLite_Workspace Name="TileGame" Database="" Version="10.0.0">
   <Project Name="Engine" Path="Engine/Engine.project" Active="Yes"/>
   <Project Name="TileTool" Path="TileTool/TileTool.project" Active="No"/>
   <BuildMatrix>

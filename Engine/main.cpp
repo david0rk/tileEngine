@@ -2,7 +2,7 @@
 #include <iostream>
 const int WINDOW_WIDTH = 640;
 const int WINDOW_HEIGHT = 640;
-const char* WINDOW_TITLE = "I am the tile whisperer";
+const char* WINDOW_TITLE = "The Tile Whisperer (TM) NOW WITH MOTHERFUCKIN LAYERS";
 int tilesize = 16; // sets tile size for the renderer. 
 using namespace std;
 int main(int argc, char **argv)
@@ -100,8 +100,32 @@ int stepX = WINDOW_WIDTH/tilesize;
 	SDL_BlitSurface(spriteSheet, &thisTile, screen, &bgLayer);
 	
 } 
+
+// test foreground layer
+//change tile
+  //  SPRITE LAYER!  LAYER 2 
+thisTile.x = 0+tilesize;
+thisTile.y = 0;
+thisTile.w = tilesize;
+thisTile.h = tilesize;
+
+	for (int i=0;i<=stepY;i++) //fill columns with tile
+{
+		for (int j=0;j<=stepX;j++) //fill rows with tile
+{
+	decoLayer.x=j*tilesize;
+	SDL_BlitSurface(spriteSheet, &thisTile, screen, &decoLayer);
+} 
+	decoLayer.y=i*tilesize;
+	SDL_BlitSurface(spriteSheet, &thisTile, screen, &decoLayer);
+	
+} 
+
 SDL_Flip(screen);
 
+//reset tile
+thisTile.x = 0;
+thisTile.y = 0;
 
 while (gameRunning)
 {

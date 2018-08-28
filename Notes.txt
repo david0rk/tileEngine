@@ -1,0 +1,79 @@
+General improvements
+
+get rid of art.bmp and break it out into tiles.bmp and sprites.bmp
+    expands horizontally, easy enumeration
+    
+stop using +1 hack for sprite/tile spacing, make it a global that can be adjusted.
+example sprite #3  would be 
+spriteno=3 
+sprite.x= (spriteno*tilewidth)+(spriteno*pad)
+
+spriteno is the position of the spite from the left (the third sprite)
+pad is the padding value (spacing between tiles/sprites for the sheet) 
+tilewidth is the globally defined sprite/tile size 
+
+
+Break out drawing into a function
+
+directly copied from main.cpp
+	for (int i=0;i<=stepY;i++) //fill columns with tile
+{
+		for (int j=0;j<=stepX;j++) //fill rows with tile
+{
+	<LAYER>.x=j*tilesize;
+	SDL_BlitSurface(spriteSheet, &thisTile, screen, &<LAYER>);
+} 
+	<LAYER>.y=i*tilesize;
+	SDL_BlitSurface(spriteSheet, &thisTile, screen, &<LAYER>);
+	
+} 
+
+being &tile and &layer things should hog memory, but that'll be a bridge we cross once its built. 
+
+
+
+
+before we make an architectural fuckup that requires a pain in the ass rework, the drawing function needs to be able to handle different tiles in the same layer.
+&thistile needs to be updated as things are iterated (tile 0,0 might be 0 in the sheet, tile 0,1 may be 4 in the sheet) 
+
+need to make a map format, unfortunately has to be based on window resolution for now.
+x tiles wide by y tiles tall, based on window dimensions. 
+maybe map config file can spec resolution, tile width?  
+
+and how many layers do we need? 
+
+background, scene foreground, fx layer (fog,fire dirt,etc), npc/item  (also player) sprites?  (and then the engine ui layer on top)
+
+
+
+painting algorithm of sorts as well needs to be devised for redraw
+
+lighting effects idea:  darkness (50% every other pixel black) can maybe be nullified by overdrawing transparency around the player/sprite in layer n-1? 
+inefficient- drawing the layer to paint over it again... it'd be cheaper to just iterate around the player and skip the fx layer? 
+
+still need to sort out the tile math for shit like that  playerpos, x1,ysame x-1,ysame (sides) xsame,y+1, xsame,y-1 (top&bottom), x+1,y+1 (lowerright) x+1,y-1 (upright), x-1,y+1 downleft, x-1,y-1 upleft
+or... i could enumerate the tiles, and then sort out how to get around the player that way.
+
+0 1 2 3  
+4 5 6 7 
+8 9 a b 
+c d e f
+
+player is at 5, tiles 0, 1, 2, 4, 6, 8, 9, a need to be lit.
+
+n-1 n +1 covers 4 and 6
+
+4 tiles wide, 5 is 2nd col 2nd rows 
+
+-4 to get previous rows +1 and -1 covers  0 1 2
++4 to get next row, +1 -1 covers 8 9 a
+
+magicsauce = 
+enumeratedtile, enumeratedtile+1 enumeratedtile-1
+enumeratedtile-tileswide, enumeratedtile-tileswide+1,enumeratedtile-tileswide-1
+enumeratedtile+tileswide, enumeratedtile+tileswide+1, enumeratedtile+tileswide-1
+
+
+k, enumerating tiles is a good idea, lets us do simple +- shifts for effects and stuff
+
+-could also be used for infinite scroll wrapping (that shits broken in the main code btw, resets to 0,0 when running off the edge without preserving y)
