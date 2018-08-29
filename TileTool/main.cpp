@@ -50,8 +50,7 @@ drawDest.w = 0;
 drawDest.h = 0;
 
 
-
-// initial draw (ONE IN THE CHAMBER!) 
+// initial draw
 SDL_BlitSurface(sourceSheet, &loadedTile, screen, &drawDest); 
 SDL_Flip(screen);
 

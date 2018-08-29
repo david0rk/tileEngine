@@ -5,15 +5,15 @@
 ## Debug
 ProjectName            :=Engine
 ConfigurationName      :=Debug
-WorkspacePath          :=/mnt/eeba5cb6-30e4-4291-ac58-c417cb8c999a/Projects/Github/tileEngine
-ProjectPath            :=/mnt/eeba5cb6-30e4-4291-ac58-c417cb8c999a/Projects/Github/tileEngine/Engine
+WorkspacePath          :=/home/david0rk/Projects/Github/tileEngine
+ProjectPath            :=/home/david0rk/Projects/Github/tileEngine/Engine
 IntermediateDirectory  :=./Debug
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=David
-Date                   :=28/08/18
+Date                   :=29/08/18
 CodeLitePath           :=/home/david0rk/.codelite
 LinkerName             :=/usr/bin/g++
 SharedObjectLinkerName :=/usr/bin/g++ -shared -fPIC
@@ -92,7 +92,7 @@ PreBuild:
 ## Objects
 ##
 $(IntermediateDirectory)/main.cpp$(ObjectSuffix): main.cpp $(IntermediateDirectory)/main.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/mnt/eeba5cb6-30e4-4291-ac58-c417cb8c999a/Projects/Github/tileEngine/Engine/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/david0rk/Projects/Github/tileEngine/Engine/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/main.cpp$(DependSuffix): main.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/main.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/main.cpp$(DependSuffix) -MM main.cpp
 
