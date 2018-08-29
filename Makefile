@@ -1,8 +1,8 @@
 .PHONY: clean All
 
 All:
-	@echo "----------Building project:[ Engine - Debug ]----------"
-	@cd "Engine" && "$(MAKE)" -f  "Engine.mk"
+	@echo "----------Building project:[ TileTool - Debug ]----------"
+	@cd "TileTool" && "$(MAKE)" -f  "TileTool.mk"
 clean:
-	@echo "----------Cleaning project:[ Engine - Debug ]----------"
-	@cd "Engine" && "$(MAKE)" -f  "Engine.mk" clean
+	@echo "----------Cleaning project:[ TileTool - Debug ]----------"
+	@cd "TileTool" && "$(MAKE)" -f  "TileTool.mk" clean

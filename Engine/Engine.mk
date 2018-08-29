@@ -5,8 +5,8 @@
 ## Debug
 ProjectName            :=Engine
 ConfigurationName      :=Debug
-WorkspacePath          :=/home/david0rk/Projects/Github/tileEngine
-ProjectPath            :=/home/david0rk/Projects/Github/tileEngine/Engine
+WorkspacePath          :=/mnt/eeba5cb6-30e4-4291-ac58-c417cb8c999a/Projects/Github/tileEngine
+ProjectPath            :=/mnt/eeba5cb6-30e4-4291-ac58-c417cb8c999a/Projects/Github/tileEngine/Engine
 IntermediateDirectory  :=./Debug
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
@@ -78,6 +78,11 @@ $(OutputFile): $(IntermediateDirectory)/.d $(Objects)
 	@echo $(Objects0)  > $(ObjectsFileList)
 	$(LinkerName) $(OutputSwitch)$(OutputFile) @$(ObjectsFileList) $(LibPath) $(Libs) $(LinkOptions)
 
+PostBuild:
+	@echo Executing Post Build commands ...
+	cp ../art/* ./Debug/
+	@echo Done
+
 MakeIntermediateDirs:
 	@test -d ./Debug || $(MakeDirCommand) ./Debug
 
@@ -92,7 +97,7 @@ PreBuild:
 ## Objects
 ##
 $(IntermediateDirectory)/main.cpp$(ObjectSuffix): main.cpp $(IntermediateDirectory)/main.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/david0rk/Projects/Github/tileEngine/Engine/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/mnt/eeba5cb6-30e4-4291-ac58-c417cb8c999a/Projects/Github/tileEngine/Engine/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/main.cpp$(DependSuffix): main.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/main.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/main.cpp$(DependSuffix) -MM main.cpp
 

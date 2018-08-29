@@ -4,10 +4,12 @@
   <Project Name="TileTool" Path="TileTool/TileTool.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
-      <Project Name="Engine" ConfigName="Debug"/>
+      <Environment/>
       <Project Name="TileTool" ConfigName="Debug"/>
+      <Project Name="Engine" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
       <Project Name="Engine" ConfigName="Release"/>
       <Project Name="TileTool" ConfigName="Release"/>
     </WorkspaceConfiguration>
